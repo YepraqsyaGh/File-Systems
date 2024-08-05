@@ -2,7 +2,7 @@
 const fs = require('node:fs');
 const path = require('path');
 
-const pathFolder = './watchDir';
+const pathFolder = path.join(__dirname, 'watchDir');
 const pathFile = path.join(pathFolder, 'testFile.txt');
 const watcher = fs.watch(pathFolder);
 

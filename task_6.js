@@ -1,7 +1,10 @@
 // Error Handling
 const fs = require('fs');
+const path = require('path');
 
-fs.readFile('./onExistentFile.txt', 'utf8', (err, data) => {
+const filePath = path.join(__dirname, 'onExistentFile.txt');
+
+fs.readFile(filePath, 'utf8', (err, data) => {
     if (err) {
         if (err.code === 'ENOENT') {
             console.error('Error: The file does not exist.');

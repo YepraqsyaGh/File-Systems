@@ -2,9 +2,9 @@
 const fs = require('fs');
 const path = require('path');
 
-const pathFolder = './filesDir';
+const filePath = path.join(__dirname, 'metadata.txt');
 
-fs.stat('./metadata.txt', (err, stats) => {
+fs.stat(filePath, (err, stats) => {
     if (err) {
         console.error('Error getting file metadata:', err);
         return;
@@ -17,11 +17,11 @@ fs.stat('./metadata.txt', (err, stats) => {
     console.log('Is File:', stats.isFile());
 });
 
-fs.chmod('./metadata.txt', 0o444, (err) => {
+fs.chmod(filePath, fs.constants.R_OK, (err) => {
     if (err) console.error(err);
     else console.log('File permissions changed to read-only');
 });
 
-fs.writeFile('./metadata.txt', 'Hello world', (err) => {
+fs.writeFile(filePath, 'Hello world', (err) => {
     if (err) console.error(err);
 });

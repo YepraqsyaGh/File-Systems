@@ -2,7 +2,7 @@
 const fs = require('node:fs');
 const path = require('path');
 
-const pathFolder = './testDir';
+const pathFolder = path.join(__dirname, 'testDir');
 const pathFile = path.join(pathFolder, 'testFile.txt');
 const pathRenamedFile = path.join(pathFolder, 'renamedFile.txt');
 const text = "Create directory and add new file"

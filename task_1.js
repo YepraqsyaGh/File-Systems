@@ -1,21 +1,24 @@
 //Basic File Operations
 
 const fs = require('node:fs');
+const path = require('path');
 
-fs.writeFile('./example.txt', "Hello, World!", err => {
+const filePath = path.join(__dirname, 'example.txt');
+
+fs.writeFile(filePath, "Hello, World!", err => {
     if (err) {
       console.error(err);
     } 
   });
 
-  fs.appendFile('./example.txt', " This is Node.js FS module.", err => {
+  fs.appendFile(filePath, " This is Node.js FS module.", err => {
     if (err) {
       console.error(err);
     }
   });
 
 
-fs.readFile('./example.txt', 'utf8', (err, data) => {
+fs.readFile(filePath, 'utf8', (err, data) => {
   if (err) {
     console.error(err);
   } else console.log(data);

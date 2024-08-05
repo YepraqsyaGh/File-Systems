@@ -1,13 +1,16 @@
 // Synchronous vs. Asynchronous Operations
 const fs = require('node:fs');
+const path = require('path');
 
-fs.readFile('./metods.txt', 'utf8', (err, data) => {
+const filePath = path.join(__dirname, 'metods.txt');
+
+fs.readFile(filePath, 'utf8', (err, data) => {
     if (err) {
         console.error(err);
     } else console.log('File read successfully:', data);
 });
 
-fs.writeFile('./example.txt', "Last Text", err => {
+fs.writeFile(filePath, "Last Text", err => {
     if (err) {
         console.error(err);
     } else console.log('File written successfully');;
@@ -16,10 +19,10 @@ fs.writeFile('./example.txt', "Last Text", err => {
 
 
 try {
-    const data = fs.readFileSync('./metods.txt', 'utf8');
+    const data = fs.readFileSync(filePath, 'utf8');
     console.log('File read successfully:', data);
 
-    fs.writeFileSync('./example.txt', "Last Text");
+    fs.writeFileSync(filePath, "Last Text");
     console.log('File written successfully');
 } catch (err) {
     console.error('Error:', err);

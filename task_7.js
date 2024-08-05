@@ -2,7 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const pathFolder = './filesDir';
+const pathFolder = path.join(__dirname, 'filesDir');
 
 fs.readdir(pathFolder, (err, files) => {
     if (err)
@@ -19,7 +19,7 @@ fs.readdir(pathFolder, (err, files) => {
     if (err)
         console.log(err);
     else {
-        const pathNewFolder = path.join(`./newFilesDir`);
+        const pathNewFolder = path.join(__dirname, 'newFilesDir');
 
         fs.mkdir(pathNewFolder, { recursive: true }, (err) => {
             if (err) console.log(err)
@@ -28,7 +28,7 @@ fs.readdir(pathFolder, (err, files) => {
                     const pathFile = path.join(pathFolder, file);
                     const pathNewFile = path.join(pathNewFolder, file);
 
-                    fs.copyFile(pathFile, pathNewFile, (err) => {
+                    fs.cp(pathFile, pathNewFile, {recursive: true}, (err) => {
                         if (err) console.error(err);
 
                     });
